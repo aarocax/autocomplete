@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+	<label>Cliente</label>
+	<input type="text" id="customers" data-id="appointment_customer"  name="select_customer[customer]" data-url="/customer/get-customer-by-name" tabindex="0" class="form-control autocomplete" value="{{ form.vars.data.lastname|default('') }}">
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

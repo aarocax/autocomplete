@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Appointment{% endblock %}
+
+{% block body %}
+    <h1>Create new Appointment</h1>
+
+    {{ include('appointment/_form.html.twig') }}
+
+    <a href="{{ path('appointment_index') }}">back to list</a>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript">
+		$(function() {
+			$( ".autocomplete" ).autocomplete({
+		      source: '/customer/get-customer-by-name', 
+		      minLength: 2,
+		      select: function( event, ui ) {
+		      	$('#appointment_customer').val(ui.item.id);
+		        console.log( "Selected: " + ui.item.value + " aka " + ui.item.id );
+		      }
+		    });
+		});
+	</script>
+{% endblock %}
