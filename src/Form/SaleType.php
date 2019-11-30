@@ -2,14 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\Appointment;
+use App\Entity\Sale;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Form\DataTransformer\EntityToIdTransformer;
 use App\Form\Type\AutocompleteEntityType;
 
-class AppointmentType extends AbstractType
+class SaleType extends AbstractType
 {
     private $transformer;
 
@@ -17,13 +17,12 @@ class AppointmentType extends AbstractType
     {
         $this->transformer = $transformer;
     }
-    
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('customerAlias')
-            ->add('creationDate')
-            ->add('appointmentDate')
+            ->add('date')
+            ->add('total')
             ->add('customer', AutocompleteEntityType::class, [
                 // validation message if the data transformer fails
                 'invalid_message' => 'That is not a valid customer number',
@@ -36,7 +35,7 @@ class AppointmentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Appointment::class,
+            'data_class' => Sale::class,
         ]);
     }
 }

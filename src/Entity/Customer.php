@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Appointment;
+use App\Entity\Sale;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -80,6 +81,12 @@ class Customer
      * @Assert\Valid()
      */
     protected $appointments;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sale", mappedBy="customer", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    protected $sales;
 
     
  

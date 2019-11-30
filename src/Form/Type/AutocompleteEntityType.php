@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Type;
 
 use App\Form\DataTransformer\EntityToIdTransformer;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
-class CustomerSelectorType extends AbstractType
+class AutocompleteEntityType extends AbstractType
 {
     private $transformer;
 

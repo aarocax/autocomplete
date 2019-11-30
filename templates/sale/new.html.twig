@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Sale{% endblock %}
+
+{% block body %}
+    <h1>Create new Sale</h1>
+
+    {{ include('sale/_form.html.twig') }}
+
+    <a href="{{ path('sale_index') }}">back to list</a>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript">
+		$(function() {
+			$( ".autocomplete" ).autocomplete({
+		      source: '/customer/get-customer-by-name', 
+		      minLength: 2,
+		      select: function( event, ui ) {
+		      	$('#sale_customer').val(ui.item.id);
+		        console.log( "Selected: " + ui.item.value + " aka " + ui.item.id );
+		      }
+		    });
+		});
+	</script>
+{% endblock %}
